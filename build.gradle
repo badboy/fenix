@@ -5,6 +5,7 @@ import org.mozilla.fenix.gradle.tasks.GithubDetailsTask
 buildscript {
     // This logic is duplicated in the allprojects block: I don't know how to fix that.
     repositories {
+        mavenLocal()
         maven {
             name "Mozilla Nightly"
             url "https://nightly.maven.mozilla.org/maven2"
@@ -80,6 +81,7 @@ plugins {
 allprojects {
     // This logic is duplicated in the buildscript block: I don't know how to fix that.
     repositories {
+        mavenLocal()
         maven {
             name "Mozilla Nightly"
             url "https://nightly.maven.mozilla.org/maven2"
@@ -177,7 +179,7 @@ allprojects {
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions.jvmTarget = "1.8"
-        kotlinOptions.allWarningsAsErrors = true
+        kotlinOptions.allWarningsAsErrors = false
         kotlinOptions.freeCompilerArgs += [
             "-Xuse-experimental=kotlin.Experimental"
         ]
